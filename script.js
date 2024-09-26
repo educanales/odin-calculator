@@ -84,11 +84,13 @@ operatorBtn.forEach((button) => {
 
 equalBtn.addEventListener('click', () => {
   // console.log(displayValue)
-  secondNumber = displayValue.split(' + ').slice(1).join('');
+  secondNumber = displayValue.split(' ').slice(2).join('');
   secondNumber = Number(secondNumber);
-  console.log(secondNumber)
+  // console.log(secondNumber)
   // operate(operator, firstNumber, secondNumber);
   display.textContent = operate(operator, firstNumber, secondNumber);
+  displayValue = operate(operator, firstNumber, secondNumber);
+  firstNumber = operate(operator, firstNumber, secondNumber);
 })
 
 
