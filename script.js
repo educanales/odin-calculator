@@ -63,31 +63,25 @@ operatorBtn.forEach((button) => {
     switch (button.id) {
       case '+':
         operator = 'sum';
-        displayValue += ' + ';
         break;
       case '-':
         operator = 'subtrack';
-        displayValue += ' - ';
         break;
       case '*':
         operator = 'multiply';
-        displayValue += ' * ';
         break;
       case '/':
         operator = 'divide';
-        displayValue += ' / ';
         break;
     }
+    displayValue += ` ${button.id} `;
     display.textContent = displayValue;
   })
 }) 
 
 equalBtn.addEventListener('click', () => {
-  // console.log(displayValue)
   secondNumber = displayValue.split(' ').slice(2).join('');
   secondNumber = Number(secondNumber);
-  // console.log(secondNumber)
-  // operate(operator, firstNumber, secondNumber);
   display.textContent = operate(operator, firstNumber, secondNumber);
   displayValue = operate(operator, firstNumber, secondNumber);
   firstNumber = operate(operator, firstNumber, secondNumber);
