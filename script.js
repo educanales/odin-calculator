@@ -1,7 +1,9 @@
 let firstNumber;
 let secondNumber;
-let operator;
+let operator = '';
 let displayValue = '';
+
+console.log(operator)
 
 const btnNum = document.querySelectorAll('.btn-num');
 const display = document.querySelector('.display');
@@ -58,8 +60,12 @@ clearBtn.addEventListener('click', () => {
 
 operatorBtn.forEach((button) => {
   button.addEventListener('click', () => {
+    if (operator !== '') {
+      getResult();
+    }
     firstNumber = displayValue;
-    firstNumber = Number(firstNumber)
+    firstNumber = Number(firstNumber);
+    
     switch (button.id) {
       case '+':
         operator = 'sum';
@@ -73,19 +79,22 @@ operatorBtn.forEach((button) => {
       case '/':
         operator = 'divide';
         break;
-    }
+    }    
     displayValue += ` ${button.id} `;
     display.textContent = displayValue;
   })
 }) 
 
-equalBtn.addEventListener('click', () => {
+equalBtn.addEventListener('click', getResult);
+
+function getResult() {
   secondNumber = displayValue.split(' ').slice(2).join('');
   secondNumber = Number(secondNumber);
   display.textContent = operate(operator, firstNumber, secondNumber);
   displayValue = operate(operator, firstNumber, secondNumber);
   firstNumber = operate(operator, firstNumber, secondNumber);
-})
+  operator = '';
+}
 
 
 
