@@ -6,7 +6,8 @@ let displayValue = '';
 const btnNum = document.querySelectorAll('.btn-num');
 const display = document.querySelector('.display');
 const clearBtn = document.querySelector('.clear-btn');
-const sumBtn = document.querySelector('.sum-btn')
+const equalBtn = document.querySelector('.equal-btn');
+const sumBtn = document.querySelector('.sum-btn');
 
 function add(firstNum, secondNum) {
   return firstNum + secondNum;
@@ -58,13 +59,22 @@ clearBtn.addEventListener('click', () => {
 
 sumBtn.addEventListener('click', () => {
   firstNumber = displayValue;
+  firstNumber = Number(firstNumber)
   displayValue += ' + ';
   display.textContent = displayValue;
   operator = 'sum';
   console.log(firstNumber)
-  console.log(operator)
+  // console.log(operator)
 })
 
+equalBtn.addEventListener('click', () => {
+  // console.log(displayValue)
+  secondNumber = displayValue.split(' + ').slice(1).join('');
+  secondNumber = Number(secondNumber);
+  console.log(secondNumber)
+  // operate(operator, firstNumber, secondNumber);
+  display.textContent = operate(operator, firstNumber, secondNumber);
+})
 // function displayBtn(info) {
 //   displayValue = info.id
 //   // console.log(typeof displayValue)
