@@ -1,6 +1,7 @@
 let firstNumber;
 let secondNumber;
 let operator;
+let displayValue = null;
 
 const btnNum = document.querySelectorAll('.btn-num');
 const display = document.querySelector('.display')
@@ -36,16 +37,24 @@ function operate(operator, a, b) {
 
 btnNum.forEach((button) => {
   button.addEventListener('click', () => {
-    // displayValue = button.id
-    displayBtn(button);
+    let number
+    if (displayValue === null) {
+      displayValue = button.id;
+    } else {
+      number = button.id
+      displayValue += number
+    }
+    display.textContent = displayValue;
+
+    // displayBtn(button);
   })
 })
 
-function displayBtn(info) {
-  displayValue = info.id
-  // console.log(typeof displayValue)
-  display.textContent = displayValue;
-}
+// function displayBtn(info) {
+//   displayValue = info.id
+//   // console.log(typeof displayValue)
+//   display.textContent = displayValue;
+// }
 
 
 // console.log(add(2, 2))
