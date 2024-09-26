@@ -7,7 +7,7 @@ const btnNum = document.querySelectorAll('.btn-num');
 const display = document.querySelector('.display');
 const clearBtn = document.querySelector('.clear-btn');
 const equalBtn = document.querySelector('.equal-btn');
-const sumBtn = document.querySelector('.sum-btn');
+const operatorBtn = document.querySelectorAll('.operator-btn');
 
 function add(firstNum, secondNum) {
   return firstNum + secondNum;
@@ -48,7 +48,6 @@ btnNum.forEach((button) => {
       displayValue += secondValue;
     }
     display.textContent = displayValue;
-    // displayBtn(button);
   })
 })
 
@@ -57,15 +56,31 @@ clearBtn.addEventListener('click', () => {
   display.textContent = ''
 })
 
-sumBtn.addEventListener('click', () => {
-  firstNumber = displayValue;
-  firstNumber = Number(firstNumber)
-  displayValue += ' + ';
-  display.textContent = displayValue;
-  operator = 'sum';
-  console.log(firstNumber)
-  // console.log(operator)
-})
+operatorBtn.forEach((button) => {
+  button.addEventListener('click', () => {
+    firstNumber = displayValue;
+    firstNumber = Number(firstNumber)
+    switch (button.id) {
+      case '+':
+        operator = 'sum';
+        displayValue += ' + ';
+        break;
+      case '-':
+        operator = 'subtrack';
+        displayValue += ' - ';
+        break;
+      case '*':
+        operator = 'multiply';
+        displayValue += ' * ';
+        break;
+      case '/':
+        operator = 'divide';
+        displayValue += ' / ';
+        break;
+    }
+    display.textContent = displayValue;
+  })
+}) 
 
 equalBtn.addEventListener('click', () => {
   // console.log(displayValue)
@@ -75,11 +90,7 @@ equalBtn.addEventListener('click', () => {
   // operate(operator, firstNumber, secondNumber);
   display.textContent = operate(operator, firstNumber, secondNumber);
 })
-// function displayBtn(info) {
-//   displayValue = info.id
-//   // console.log(typeof displayValue)
-//   display.textContent = displayValue;
-// }
+
 
 
 // console.log(add(2, 2))
