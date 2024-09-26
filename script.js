@@ -6,6 +6,7 @@ let displayValue = '';
 const btnNum = document.querySelectorAll('.btn-num');
 const display = document.querySelector('.display');
 const clearBtn = document.querySelector('.clear-btn');
+const sumBtn = document.querySelector('.sum-btn')
 
 function add(firstNum, secondNum) {
   return firstNum + secondNum;
@@ -38,16 +39,14 @@ function operate(operator, a, b) {
 
 btnNum.forEach((button) => {
   button.addEventListener('click', () => {
-    let number
+    let secondValue;
     if (displayValue === '') {
       displayValue = button.id;
     } else {
-      number = button.id
-      displayValue += number
+      secondValue = button.id;
+      displayValue += secondValue;
     }
-    console.log(typeof displayValue)
     display.textContent = displayValue;
-    
     // displayBtn(button);
   })
 })
@@ -55,6 +54,15 @@ btnNum.forEach((button) => {
 clearBtn.addEventListener('click', () => {
   displayValue = '';
   display.textContent = ''
+})
+
+sumBtn.addEventListener('click', () => {
+  firstNumber = displayValue;
+  displayValue += ' + ';
+  display.textContent = displayValue;
+  operator = 'sum';
+  console.log(firstNumber)
+  console.log(operator)
 })
 
 // function displayBtn(info) {
