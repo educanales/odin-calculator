@@ -54,7 +54,10 @@ btnNum.forEach((button) => {
 })
 
 clearBtn.addEventListener('click', () => {
+  firstNumber = '';
+  secondNumber = '';
   displayValue = '';
+  operator = '';
   display.textContent = ''
 })
 
