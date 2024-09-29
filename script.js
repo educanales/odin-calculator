@@ -24,6 +24,9 @@ function multiply(firstNum, secondNum) {
 }
 
 function divide(firstNum, secondNum) {
+  if (secondNum === 0) {
+    return "Error"
+  }
   return firstNum / secondNum;
 }
 
@@ -91,10 +94,12 @@ operatorBtn.forEach((button) => {
 equalBtn.addEventListener('click', getResult);
 
 function getResult() {
+  // let result;
   secondNumber = displayValue.split(' ').slice(2).join('');
   secondNumber = Number(secondNumber);
   display.textContent = operate(operator, firstNumber, secondNumber);
   displayValue = operate(operator, firstNumber, secondNumber);
   firstNumber = operate(operator, firstNumber, secondNumber);
+  // firstNumber = result
   operator = '';
 }
