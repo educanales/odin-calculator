@@ -52,7 +52,11 @@ btnNum.forEach((button) => {
       secondValue = button.id;
       displayValue += secondValue;
     }
-    display.textContent = displayValue;
+    if (displayValue.length >= 20) {
+      displayValue = displayValue.slice(0, 20)
+    } else {
+      display.textContent = displayValue;
+    }
   })
 })
 
@@ -94,12 +98,18 @@ operatorBtn.forEach((button) => {
 equalBtn.addEventListener('click', getResult);
 
 function getResult() {
-  // let result;
+  let result;
   secondNumber = displayValue.split(' ').slice(2).join('');
   secondNumber = Number(secondNumber);
-  display.textContent = operate(operator, firstNumber, secondNumber);
+  result = operate(operator, firstNumber, secondNumber);
+  result = result.toString();
+  if (result.length >= 17) {
+    console.log("exceed length")
+    result = result.slice(0, 17);
+  }
   displayValue = operate(operator, firstNumber, secondNumber);
   firstNumber = operate(operator, firstNumber, secondNumber);
   // firstNumber = result
+  display.textContent = result;
   operator = '';
 }
