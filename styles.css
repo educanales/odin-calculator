@@ -51,14 +51,51 @@ h1 {
 .btn-container {
   margin: 16px auto;
   /* padding: 16px; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* gap: 8px; */
-  /* justify-content: center; */
+  /* display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-end; */
 }
 
 button {
   margin: 4px;
   width: 48px;
   height: 48px;
+  background-color: rgb(143, 143, 143);
+  color: white;
+  border: none;
+}
+
+button:hover {
+  border: solid 1px white;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.del-btn {
+  background-color: rgb(219, 88, 55);
+}
+
+.clear-btn {
+  background-color:rgb(114, 19, 19);
+}
+
+.operator-btn {
+  background-color: darkolivegreen;
+}
+
+.equal-btn {
+  background-color: darkgoldenrod;
+}
+
+.decimal-btn {
+  background-color: white;
+}
+
+.btn-container > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
 }
