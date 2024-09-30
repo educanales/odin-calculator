@@ -74,8 +74,8 @@ operatorBtn.forEach((button) => {
     if (operator !== '') {
       getResult();
     }
-    firstNumber = displayValue;
-    firstNumber = Number(firstNumber);
+    firstNumber = Number(displayValue);
+    displayValue = '';
     
     switch (button.id) {
       case '+':
@@ -91,28 +91,33 @@ operatorBtn.forEach((button) => {
         operator = 'divide';
         break;
     }    
-    displayValue += ` ${button.id} `;
-    display.textContent = displayValue;
+    // displayValue += ` ${button.id} `;
+    // display.textContent = displayValue;
   })
-}) 
+})
 
 equalBtn.addEventListener('click', getResult);
 
 function getResult() {
   let result;
-  secondNumber = displayValue.split(' ').slice(2).join('');
-  secondNumber = Number(secondNumber);
+  // secondNumber = displayValue;
+  secondNumber = Number(displayValue);
   result = operate(operator, firstNumber, secondNumber);
-  result = result.toString();
-  if (result.length >= 17) {
-    console.log("exceed length")
-    result = result.slice(0, 17);
-  }
-  displayValue = operate(operator, firstNumber, secondNumber);
-  firstNumber = operate(operator, firstNumber, secondNumber);
-  // firstNumber = result
-  display.textContent = result;
+  if (result % 1 !== 0) {
+    result = result.toFixed(4);
+    console.log(typeof result)
+  } else {
+    result = result.toString();
+  }  
+  // if (result.length >= 17) {
+  //   console.log("exceed length")
+  //   result = result.slice(0, 17);
+  // }
+  displayValue = result;
+  firstNumber = result;
+  secondNumber = '';
   operator = '';
+  display.textContent = result;
 }
 
 delBtn.addEventListener('click', () => {
