@@ -10,6 +10,7 @@ const display = document.querySelector('.display');
 const clearBtn = document.querySelector('.clear-btn');
 const equalBtn = document.querySelector('.equal-btn');
 const operatorBtn = document.querySelectorAll('.operator-btn');
+const delBtn = document.querySelector('.del-btn');
 
 function add(firstNum, secondNum) {
   return firstNum + secondNum;
@@ -113,3 +114,8 @@ function getResult() {
   display.textContent = result;
   operator = '';
 }
+
+delBtn.addEventListener('click', () => {
+  displayValue = displayValue.slice(0, -1);
+  display.textContent = displayValue;
+})
