@@ -46,18 +46,7 @@ function operate(operator, a, b) {
 
 btnNum.forEach((button) => {
   button.addEventListener("click", () => {
-    let secondValue;
-    if (displayValue === "") {
-      displayValue = button.id;
-    } else {
-      secondValue = button.id;
-      displayValue += secondValue;
-    }
-    if (displayValue.length >= 20) {
-      displayValue = displayValue.slice(0, 20);
-    } else {
-      display.textContent = displayValue;
-    }
+    setNumber(button.id)
   });
 });
 
@@ -75,20 +64,24 @@ window.addEventListener("keydown", (event) => {
     event.key === "8" ||
     event.key === "9"
   ) {
-    let secondValue;
-    if (displayValue === "") {
-      displayValue = event.key;
-    } else {
-      secondValue = event.key;
-      displayValue += secondValue;
-    }
-    if (displayValue.length >= 20) {
-      displayValue = displayValue.slice(0, 20);
-    } else {
-      display.textContent = displayValue;
-    }
+    setNumber(event.key);
   }
 });
+
+function setNumber(number) {
+  let secondValue;
+  if (displayValue === "") {
+    displayValue = number;
+  } else {
+    secondValue = number;
+    displayValue += secondValue;
+  }
+  if (displayValue.length >= 20) {
+    displayValue = displayValue.slice(0, 20);
+  } else {
+    display.textContent = displayValue;
+  }
+}
 
 clearBtn.addEventListener("click", () => {
   firstNumber = "";
