@@ -133,6 +133,13 @@ function setOperator(inputOperator) {
 
 equalBtn.addEventListener("click", getResult);
 
+window.addEventListener('keydown', (event) => {
+  // console.log(event.key)
+  if (event.key === "Enter") {
+    getResult();
+  }
+})
+
 function getResult() {
   let result;
   secondNumber = Number(displayValue);
