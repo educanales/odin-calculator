@@ -113,8 +113,6 @@ operatorBtn.forEach((button) => {
         operator = "divide";
         break;
     }
-    // displayValue += ` ${button.id} `;
-    // display.textContent = displayValue;
   });
 });
 
@@ -122,7 +120,6 @@ equalBtn.addEventListener("click", getResult);
 
 function getResult() {
   let result;
-  // secondNumber = displayValue;
   secondNumber = Number(displayValue);
   result = operate(operator, firstNumber, secondNumber);
   if (result % 1 !== 0) {
@@ -131,10 +128,6 @@ function getResult() {
   } else {
     result = result.toString();
   }
-  // if (result.length >= 17) {
-  //   console.log("exceed length")
-  //   result = result.slice(0, 17);
-  // }
   displayValue = result;
   firstNumber = result;
   secondNumber = "";
