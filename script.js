@@ -46,7 +46,7 @@ function operate(operator, a, b) {
 
 btnNum.forEach((button) => {
   button.addEventListener("click", () => {
-    setNumber(button.id)
+    setNumber(button.id);
   });
 });
 
@@ -92,29 +92,44 @@ clearBtn.addEventListener("click", () => {
 });
 
 operatorBtn.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (operator !== "") {
-      getResult();
-    }
-    firstNumber = Number(displayValue);
-    displayValue = "";
-
-    switch (button.id) {
-      case "+":
-        operator = "sum";
-        break;
-      case "-":
-        operator = "subtrack";
-        break;
-      case "*":
-        operator = "multiply";
-        break;
-      case "/":
-        operator = "divide";
-        break;
-    }
+  button.addEventListener("click", () => {    
+    setOperator(button.id);
   });
 });
+
+window.addEventListener("keydown", (event) => {
+  if (
+    event.key === "+" ||
+    event.key === "-" ||
+    event.key === "*" ||
+    event.key === "/"
+  ) {
+    setOperator(event.key);
+  }
+});
+
+function setOperator(inputOperator) {
+  if (operator !== "") {
+    getResult();
+  }
+  firstNumber = Number(displayValue);
+  displayValue = "";
+
+  switch (inputOperator) {
+    case "+":
+      operator = "sum";
+      break;
+    case "-":
+      operator = "subtrack";
+      break;
+    case "*":
+      operator = "multiply";
+      break;
+    case "/":
+      operator = "divide";
+      break;
+  }
+}
 
 equalBtn.addEventListener("click", getResult);
 
